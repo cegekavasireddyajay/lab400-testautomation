@@ -9,7 +9,7 @@ pipeline {
         node { label 'java11chromium' }
     }
     triggers {
-        cron('0 2-3,5-23/2 * * *')
+        cron('0 22 * * *')
     }
     parameters {
         choice(name: 'env', choices: ['DEV', 'TST', 'QAS'], description: 'Pick your env')
