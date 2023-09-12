@@ -1,0 +1,78 @@
+import java.nio.file.Paths
+
+plugins {
+    id 'java'
+}
+
+repositories {
+    maven {
+        url "https://nexus.cegeka.be/nexus/content/groups/public"
+    }
+    mavenCentral()
+    maven {
+        url "https://artifactory.viollier.ch/artifactory/build-dependencies/"
+    }
+    maven {
+        url "https://artifactory.viollier.ch/artifactory/build-dependencies-snapshots/"
+    }
+}
+
+
+dependencies {
+    testImplementation group: 'net.sf.jt400', name: 'jt400', version: '10.7'
+    testImplementation group: 'com.mchange', name: 'c3p0', version: '0.9.5.5'
+    testImplementation group: 'org.springframework', name: 'spring-core', version: '5.3.19'
+    testImplementation group: 'org.json', name: 'json', version: '20220320'
+    testImplementation group: 'se.daan.as400automation', name: 'engine', version: '0.3.0'
+    testImplementation group: 'com.cegeka.boxtools', name: 'fake-poct-core', version: '1.0.0-SNAPSHOT'
+    testImplementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    testImplementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.13'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.5'
+    testImplementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.13.0'
+    testImplementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.26'
+    testImplementation group: 'net.sourceforge.tess4j', name: 'tess4j', version: '4.5.1'
+    testImplementation group: 'org.apache.camel', name: 'camel-barcode', version: '3.18.0'
+    testImplementation group: 'co.elastic.clients', name: 'elasticsearch-java', version: '7.17.2'
+    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+    testImplementation group: 'jakarta.json', name: 'jakarta.json-api', version: '2.0.1'
+    testImplementation group: 'commons-validator', name: 'commons-validator', version: '1.5.1'
+    testImplementation group: 'org.awaitility', name: 'awaitility', version: '4.2.0'
+    testImplementation group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
+    testImplementation group: 'eu.agno3.jcifs', name: 'jcifs-ng', version: '2.1.9'
+}
+
+test {
+    useTestNG() {
+        suites 'src/test/' + project.property('testSet') + '.xml'
+    }
+
+    options {
+        systemProperties(System.getProperties())
+    }
+
+    environment "SELENIUM_REMOTE_URL", "https://selenium-grid.dev.viollier.ch"
+    environment("PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", 1)
+//    Node doesn't like our Root CA certificate because it is self-signed, so we have to download the certificate,
+//    convert it to .pem and add it as an extra certificate using an env variable.
+    environment "NODE_EXTRA_CA_CERTS", "RootCA.pem"
+}
+
+def pushToJiraTask = tasks.register('pushToJiraTask') {
+    doLast {
+        javaexec {
+            classpath = sourceSets.test.runtimeClasspath
+            mainClass = 'ui.XrayReporter'
+        }
+    }
+}
+
+pushToJiraTask.configure {
+        onlyIf {System.getProperty('testExec') != '' && System.getProperty('testExec') != null }
+}
+
+test.configure {
+    finalizedBy pushToJiraTask
+}

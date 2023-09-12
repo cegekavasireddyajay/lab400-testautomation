@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="ui.CustomXMLReporter"/>
+        <listener class-name="ui.AlterSuiteListener"/>
+    </listeners>
+    <test name="Parallel_regression_tests" parallel="classes">
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <!-- Tests that can run in parallel without having impact to each other -->
+            <class name="ui.Testcases.LisVTC1"/>
+        </classes>
+    </test>
+    <test name="Sequential_regression_tests" parallel="classes" thread-count="1">
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <!-- Other Tests that can run in sequential -->
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,16 @@
+#Files
+.DS_Store
+
+
+#Paths
+out/
+.idea/
+app/test-output/
+test-output/
+# Ignore Gradle project-specific cache directory
+.gradle
+*.log
+*.log.zip
+
+# Ignore Gradle build output directory
+build

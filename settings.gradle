@@ -1,0 +1,2 @@
+rootProject.name = 'lab400-automation'
+include('app')

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CustomSuite" parallel="tests" thread-count="4">
+    <listeners>
+        <listener class-name="ui.CustomXMLReporter"/>
+        <listener class-name="ui.AlterSuiteListener"/>
+    </listeners>
+    <test name="Parallel_custom_tests" parallel="classes">
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="ui.Testcases.LisVTC1"/>
+        </classes>
+    </test>
+
+
+</suite>

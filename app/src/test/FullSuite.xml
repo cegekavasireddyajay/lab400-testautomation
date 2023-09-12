@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Fullsuite" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="ui.CustomXMLReporter"/>
+        <listener class-name="ui.AlterSuiteListener"/>
+    </listeners>
+    <test name="Parallel_fullsuite_tests" parallel="classes">
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="ui.Testcases.VTC1"/>
+            <class name="ui.Testcases.VTC2"/>
+            <class name="ui.Testcases.VTC3"/>
+            <class name="ui.Testcases.VTC4"/>
+            <class name="ui.Testcases.VTC7"/>
+            <class name="ui.Testcases.VTC8"/>
+            <class name="ui.Testcases.VTC9"/>
+            <class name="ui.Testcases.VTC35"/>
+            <class name="ui.Testcases.VTC36"/>
+            <class name="ui.Testcases.VTC37"/>
+            <class name="ui.Testcases.VTC38"/>
+            <class name="ui.Testcases.VTC39"/>
+            <class name="ui.Testcases.VTC40"/>
+            <class name="ui.Testcases.VTC41"/>
+            <class name="ui.Testcases.VTC42"/>
+            <class name="ui.Testcases.VTC43"/>
+            <class name="ui.Testcases.VTC44"/>
+            <class name="ui.Testcases.VTC48"/>
+            <class name="ui.Testcases.VTC56"/>
+            <class name="ui.Testcases.VTC57"/>
+            <class name="ui.Testcases.VTC58"/>
+            <class name="ui.Testcases.VTC59"/>
+            <class name="ui.Testcases.VTC60"/>   <!-- Using baby process flag OFF -->
+            <class name="ui.Testcases.VTC62"/>   <!-- Using baby process flag OFF -->
+            <class name="ui.Testcases.VTC65"/>
+            <class name="ui.Testcases.VTC66"/>
+            <class name="ui.Testcases.VTC67"/>
+            <class name="ui.Testcases.VTC68"/>
+            <class name="ui.Testcases.VTC69"/>
+            <class name="ui.Testcases.VTC70"/>
+            <class name="ui.Testcases.VTC71"/>
+            <class name="ui.Testcases.VTC72"/>
+            <class name="ui.Testcases.VTC73"/>
+            <class name="ui.Testcases.VTC74"/>
+            <class name="ui.Testcases.VTC101"/> <!-- POCT automatching on orderNr instead of patient reference -->
+            <class name="ui.Testcases.VTC102"/> <!-- POCT automatching on orderNr instead of patient reference -->
+            <class name="ui.Testcases.VTC75"/>
+            <class name="ui.Testcases.VTC77"/>
+            <class name="ui.Testcases.VTC79"/>
+            <class name="ui.Testcases.VTC80"/>
+            <class name="ui.Testcases.VTC81"/>
+            <class name="ui.Testcases.VTC85"/>
+            <class name="ui.Testcases.VTC103"/> <!-- POCT automatching on orderNr instead of patient reference -->
+            <class name="ui.Testcases.VTC90"/>
+            <class name="ui.Testcases.VTC91"/>
+            <class name="ui.Testcases.VTC92"/>
+            <class name="ui.Testcases.VTC93"/>
+            <class name="ui.Testcases.VTC94"/>
+            <class name="ui.Testcases.VTC95"/>
+            <class name="ui.Testcases.VTC96"/>
+            <class name="ui.Testcases.VTC97"/>
+            <class name="ui.Testcases.VTC98"/>
+            <class name="ui.Testcases.VTC99"/>
+            <class name="ui.Testcases.VTC100"/>
+            <class name="ui.Testcases.VTC104"/>
+            <class name="ui.Testcases.VTC105"/>
+            <class name="ui.Testcases.VTC109"/>
+            <class name="ui.Testcases.VTC110"/>
+            <class name="ui.Testcases.VTC111"/>
+            <class name="ui.Testcases.VTC112"/>
+            <class name="ui.Testcases.VTC113"/>
+            <class name="ui.Testcases.VTC115"/>
+            <class name="ui.Testcases.VTC128"/>
+            <class name="ui.Testcases.VTC129"/>  <!-- Depends on V-boxes          -->
+            <class name="ui.Testcases.VTC130"/>
+            <class name="ui.Testcases.VTC132"/>
+            <class name="ui.Testcases.VTC133"/>
+            <class name="ui.Testcases.VTC140"/>
+            <class name="ui.Testcases.VTC142"/>
+            <class name="ui.Testcases.VTC171"/>
+            <class name="ui.Testcases.VTC178"/>
+            <class name="ui.Testcases.VTC179"/>
+            <class name="ui.Testcases.VTC187"/>
+            <class name="ui.Testcases.VTC188"/>
+            <class name="ui.Testcases.VTC192"/>
+            <class name="ui.Testcases.VTC199"/>
+            <class name="ui.Testcases.VTC200"/>
+            <class name="ui.Testcases.VTC201"/>
+            <class name="ui.Testcases.VTC202"/>
+            <class name="ui.Testcases.VTC206"/>
+            <class name="ui.Testcases.VTC207"/>
+            <class name="ui.Testcases.VTC208"/>
+            <class name="ui.Testcases.VTC209"/>
+            <class name="ui.Testcases.VTC211"/>
+            <class name="ui.Testcases.VTC212"/>
+            <class name="ui.Testcases.VTC214"/>
+            <class name="ui.Testcases.VTC222"/>
+            <class name="ui.Testcases.VTC229"/>
+            <class name="ui.Testcases.VTC279"/>
+            <class name="ui.Testcases.VTC296"/>
+            <class name="ui.Testcases.VTC302"/>
+            <class name="ui.Testcases.VTC323"/>
+            <class name="ui.Testcases.VTC325"/>
+            <class name="ui.Testcases.VTC326"/>
+            <class name="ui.Testcases.VTC329"/>
+            <class name="ui.Testcases.VTC353"/>
+            <class name="ui.Testcases.VTC365"/>
+        </classes>
+    </test>
+    <test name="Sequential_fullsuite_tests" parallel="classes" thread-count="1">
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="ui.Testcases.VTC34"/>   <!-- Altering doctor processing types  -->
+            <class name="ui.Testcases.VTC61"/>   <!-- Using baby process flag ON  -->
+            <class name="ui.Testcases.VTC63"/>   <!-- Using baby process flag ON  -->
+            <class name="ui.Testcases.VTC64"/>   <!-- Using baby process flag ON  -->
+            <class name="ui.Testcases.VTC76"/>   <!-- Removes a printer in full. +- 6 seconds printer downtime   -->
+        </classes>
+    </test>
+</suite>
